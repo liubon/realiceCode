@@ -11,3 +11,14 @@ function throttle(func, wait) {
     }
   };
 }
+
+function throttle(fn, wait) {
+  const timer = null;
+  return function (...args) {
+    if (timer) return;
+    setTimeout(() => {
+      fn.apply(args);
+      timer = null;
+    }, wait);
+  };
+}
