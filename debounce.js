@@ -12,3 +12,14 @@ function debounce(func, wait) {
     }, wait);
   };
 }
+
+function debounce(func, wait) {
+  let timer = null;
+  return function (...arg) {
+    const self = this;
+    if (timer) clearTimeout(timer);
+    timer = setTimeout(() => {
+      func.apply(self, arg);
+    }, wait);
+  };
+}

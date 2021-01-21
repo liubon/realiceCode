@@ -1,6 +1,6 @@
-const PENDING = 'pending';
-const FULFILLED = 'fulfilled';
-const REJECTED = 'rejected';
+const PENDING = "pending";
+const FULFILLED = "fulfilled";
+const REJECTED = "rejected";
 
 class MyPromise {
   constructor(executor) {
@@ -36,10 +36,10 @@ class MyPromise {
     executor(_resolve, _reject);
   }
   then(resolve, reject) {
-    if (typeof resolve !== 'function') {
+    if (typeof resolve !== "function") {
       resolve = (val) => val;
     }
-    if (typeof reject !== 'function') {
+    if (typeof reject !== "function") {
       reject = (reason) => {
         throw new Error(reason instanceof Error ? reason.message : reason);
       };
@@ -97,3 +97,19 @@ class MyPromise {
     });
   }
 }
+
+const promise1 = new MyPromise((res, rej) => {
+  rej();
+});
+promise1
+  .then(null, function () {
+    throw new Error();
+  })
+  .then(
+    () => {
+      console.log("已完成");
+    },
+    () => {
+      console.log("已拒绝");
+    }
+  );
