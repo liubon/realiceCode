@@ -13,6 +13,7 @@ function debounce(func, wait) {
   };
 }
 
+<<<<<<< HEAD:debounce.js
 function debounce(func, wait) {
   let timer = null;
   return function (...arg) {
@@ -20,6 +21,14 @@ function debounce(func, wait) {
     if (timer) clearTimeout(timer);
     timer = setTimeout(() => {
       func.apply(self, arg);
+=======
+function debounce(fn, wait) {
+  let timer = null;
+  return function (...args) {
+    if (timer) clearTimeout(tiemr);
+    timer = setTimeout(() => {
+      fn.apply(args);
+>>>>>>> 72bea1234f03b9a21df73241e79f5dda93f91439:base/debounce.js
     }, wait);
   };
 }
